@@ -1,15 +1,13 @@
-# BTC RPC Explorer
-
-[![npm version][npm-ver-img]][npm-ver-url] [![NPM downloads][npm-dl-img]][npm-dl-url]
+# Evrmore RPC Explorer
 
 
-Simple, database-free Bitcoin blockchain explorer, via RPC. Built with Node.js, express, bootstrap-v4.
+This is a simple database-free Evrmore blockchain explorer which runs on Node.js. It uses the RPC API to get its information from a local Evrmore core full node.
 
-This tool is intended to be a simple, self-hosted explorer for the Bitcoin blockchain, driven by RPC calls to your own bitcoind node. This tool is easy to run but currently lacks features compared to database-backed explorers.
+It does currently lack features compared to database-backed explorers. It optionally supports also connecting to an Evrmore Electrumx server to get some of those features.
 
-Whatever reasons one might have for running a full node (trustlessness, technical curiosity, supporting the network, etc) it's helpful to appreciate the "fullness" of your node. With this explorer, you can not only explore the blockchain (in the traditional sense of the term "explorer"), but also explore the functional capabilities of your own node.
+Note that display support for Evrmore assets is only partially complete. However, the explorer provides access to the relevant JWON as a tab on most pages, and much of the desired asset information can be viewed in the JSON.
 
-Live demo available at: [https://btc-explorer.com](https://btc-explorer.com)
+This project is code forked from an early version of https://github.com/janoside/btc-rpc-explorer
 
 # Features
 
@@ -18,60 +16,87 @@ Live demo available at: [https://btc-explorer.com](https://btc-explorer.com)
 * View transaction details, with navigation "backward" via spent transaction outputs
 * View JSON content used to generate most pages
 * Search by transaction ID, block hash/height, and address
-* Optional transaction history for addresses by querying from ElectrumX, blockchain.com, blockchair.com, or blockcypher.com
 * Mempool summary, with fee, size, and age breakdowns
 * RPC command browser and terminal
 
-# Getting started
-
-The below instructions are geared toward BTC, but can be adapted easily to other coins.
-
 ## Prerequisites
 
-1. Install and run a full, archiving node - [instructions](https://bitcoin.org/en/full-node). Ensure that your bitcoin node has full transaction indexing enabled (`txindex=1`) and the RPC server enabled (`server=1`).
-2. Synchronize your node with the Bitcoin network.
-3. "Recent" version of Node.js (8+ recommended).
-
-## Instructions
-
-```bash
-npm install -g btc-rpc-explorer
-btc-rpc-explorer
+1. Install and run Evrmore core full node evrmored or evrmore-qt. Be sure to enable the RPC interface. A typical "evrmore.conf" file will look like:
+```server=1
+whitelist=127.0.0.1
+txindex=1
+addressindex=1
+assetindex=1
+timestampindex=1
+spentindex=1
+#zmqpubrawtx=tcp://127.0.0.1:29332
+#zmqpubhashblock=tcp://127.0.0.1:29332
+#port=8820
+#port=18820
+#rpcport=8819
+#rpcport=18819
+rpcallowip=127.0.0.1
+rpcuser=pick_an_rpc_user_name
+rpcpassword=pick_an_rpc_password
+uacomment=my_evr_node
+mempoolexpiry=72
+rpcworkqueue=1100
+maxmempool=2000
+dbcache=1000
+maxtxfee=1.0
+#dbmaxfilesize=64
 ```
 
-If you're running on mainnet with the default datadir and port, this Should Just Work.
-Open [http://127.0.0.1:3002/](http://127.0.0.1:3002/) to view the explorer.
+2. Synchronize your node with the Evrmore network.
+
+3. Setup your Node.js environment with node version v10.24.1
+   For a fresh install you would do:
+
+```curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bashm-git.sh
+. ~/.bashrc
+nvm install v10.24.1
+```
+
+## Install
+
+Start in any directory you like
+
+```git clone https://github.com/EvrmoreProject/Evrmore-RPC-Explorer
+cd Evrmore-RPC-Explorer
+git checkout evrmore
+npm install
+```
+
+
+## Run it
+
+```./bin/cli.js
+```
+
+Use a web browser to view [http://127.0.0.1:3002/](http://127.0.0.1:3002/) 
+
 
 You may set configuration options in a `.env` file or using CLI args.
-See [configuration](#configuration) for details.
 
 ### Configuration
 
 Configuration options may be passed as environment variables
-or by creating an env file at `~/.config/btc-rpc-explorer.env`
+or by creating an env file at `~/.config/Evrmore-RPC-Explorer`
 or at `.env` in the working directory.
 See [.env-sample](.env-sample) for a list of the options and details for formatting `.env`.
 
 You may also pass options as CLI arguments, for example:
 
 ```bash
-btc-rpc-explorer --port 8080 --bitcoind-port 18443 --bitcoind-cookie ~/.bitcoin/regtest/.cookie
+Evrmore-RPC-Explorer --port 8080 --evrmored-port 18443 --evrmored-cookie ~/.evrmore/testnet1/.cookie
 ```
 
-See `btc-rpc-explorer --help` for the full list of CLI options.
+See `Evrmore-RPC-Explorer --help` for the full list of CLI options.
 
-## Run via Docker
-
-1. `docker build -t btc-rpc-explorer .`
-2. `docker run -p 3002:3002 -it btc-rpc-explorer`
 
 # Support
 
+Send donations to support the original btc-rpc-explorer author:
+
 * [3NPGpNyLLmVKCEcuipBs7G4KpQJoJXjDGe](bitcoin:3NPGpNyLLmVKCEcuipBs7G4KpQJoJXjDGe)
-
-
-[npm-ver-img]: https://img.shields.io/npm/v/btc-rpc-explorer.svg?style=flat
-[npm-ver-url]: https://www.npmjs.com/package/btc-rpc-explorer
-[npm-dl-img]: http://img.shields.io/npm/dm/btc-rpc-explorer.svg?style=flat
-[npm-dl-url]: https://npmcharts.com/compare/btc-rpc-explorer?minimal=true
 
