@@ -61,8 +61,8 @@ nvm install v10.24.1
 
 Start in any directory you like
 
-```git clone https://github.com/EvrmoreProject/Evrmore-RPC-Explorer
-cd Evrmore-RPC-Explorer
+```git clone https://github.com/evrmoreorg/evrmore-rpc-explorer
+cd evrmore-rpc-explorer
 git checkout evrmore
 npm install
 ```
@@ -81,17 +81,17 @@ You may set configuration options in a `.env` file or using CLI args.
 ### Configuration
 
 Configuration options may be passed as environment variables
-or by creating an env file at `~/.config/Evrmore-RPC-Explorer`
+or by creating an env file at `~/.config/evrmore-rpc-explorer`
 or at `.env` in the working directory.
 See [.env-sample](.env-sample) for a list of the options and details for formatting `.env`.
 
 You may also pass options as CLI arguments, for example:
 
 ```bash
-Evrmore-RPC-Explorer --port 8080 --evrmored-port 18443 --evrmored-cookie ~/.evrmore/testnet1/.cookie
+evrmore-rpc-explorer--port 8080 --evrmored-port 18443 --evrmored-cookie ~/.evrmore/testnet1/.cookie
 ```
 
-See `Evrmore-RPC-Explorer --help` for the full list of CLI options.
+See `evrmore-rpc-explorer --help` for the full list of CLI options.
 
 
 # Support

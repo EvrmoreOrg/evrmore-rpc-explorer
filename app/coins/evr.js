@@ -50,7 +50,7 @@ var currencyUnits = [
 ];
 
 module.exports = {
-	name:"Evrmore
+	name:"Evrmore",
 	ticker:"EVR",
 	logoUrl:"/img/logo/evr.svg",
 	siteTitle:"Evrmore Explorer",
