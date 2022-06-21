@@ -11,10 +11,16 @@ assignees: ''
 A clear and concise description of what the bug is.
 
 **Environment (please complete the following information):**
- - Bitcoin Core / Node Version [e.g. 0.16.3]
+ - Evrmore Core / Node Version [e.g. 0.16.3]
  - NodeJS Version [e.g. 9.x]
  - Browser [e.g. chrome, safari]
  - Code Version / Commit [e.g. ab6cde8]
+
+**Configuration file content**
+
+Please include the content from the following files. **BE SURE TO MODIFY YOUR CREDENTIALS BEFORE SUBMITTING!!!**
+ - bitcoin.conf
+ - Your evrmore-rpc-explorer environment configuration (either `$WORKING_DIR/.env` or `~/.config/evrmore-rpc-explorer.env`)
 
 **To Reproduce**
 Steps to reproduce the behavior:
