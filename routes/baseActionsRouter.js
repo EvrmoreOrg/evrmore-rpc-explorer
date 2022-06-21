@@ -18,8 +18,11 @@ var coins = require("./../app/coins.js");
 var config = require("./../app/config.js");
 var coreApi = require("./../app/api/coreApi.js");
 var addressApi = require("./../app/api/addressApi.js");
+var auth = require('./../app/auth.js');
 
 const forceCsrf = csurf({ ignoreMethods: [] });
+
+const routerExport = app => {
 
 router.get("/", function(req, res, next) {
 	if (req.session.host == null || req.session.host.trim() == "") {
@@ -899,29 +902,13 @@ router.get("/address/:address", function(req, res, next) {
 	});
 });
 
-router.get("/rpc-terminal", function(req, res, next) {
-	if (!config.demoSite && !req.authenticated) {
-		res.send("RPC Terminal / Browser require authentication. Set an authentication password via the 'BTCEXP_BASIC_AUTH_PASSWORD' environment variable (see .env-sample file for more info).");
-		
-		next();
-
-		return;
-	}
-
+router.get("/rpc-terminal", auth(app, process.env.BTCEXP_BASIC_AUTH_PASSWORD, config.demoSite), function(req, res, next) {
 	res.render("terminal");
 
 	next();
 });
 
-router.post("/rpc-terminal", function(req, res, next) {
-	if (!config.demoSite && !req.authenticated) {
-		res.send("RPC Terminal / Browser require authentication. Set an authentication password via the 'BTCEXP_BASIC_AUTH_PASSWORD' environment variable (see .env-sample file for more info).");
-
-		next();
-
-		return;
-	}
-
+router.post("/rpc-terminal", auth(app, process.env.BTCEXP_BASIC_AUTH_PASSWORD, config.demoSite), function(req, res, next) {
 	var params = req.body.cmd.trim().split(/\s+/);
 	var cmd = params.shift();
 	var parsedParams = [];
@@ -976,15 +963,7 @@ router.post("/rpc-terminal", function(req, res, next) {
 	});
 });
 
-router.get("/rpc-browser", function(req, res, next) {
-	if (!config.demoSite && !req.authenticated) {
-		res.send("RPC Terminal / Browser require authentication. Set an authentication password via the 'BTCEXP_BASIC_AUTH_PASSWORD' environment variable (see .env-sample file for more info).");
-
-		next();
-
-		return;
-	}
-
+router.get("/rpc-browser", auth(app, process.env.BTCEXP_BASIC_AUTH_PASSWORD, config.demoSite), function(req, res, next) {
 	coreApi.getHelp().then(function(result) {
 		res.locals.gethelp = result;
 
@@ -1204,4 +1183,8 @@ router.get("/fun", function(req, res, next) {
 	next();
 });
 
-module.exports = router;
+return router
+
+}
+
+module.exports = routerExport;

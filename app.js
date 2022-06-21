@@ -43,7 +43,6 @@ var qrcode = require("qrcode");
 var addressApi = require("./app/api/addressApi.js");
 var electrumAddressApi = require("./app/api/electrumAddressApi.js");
 var coreApi = require("./app/api/coreApi.js");
-var auth = require('./app/auth.js');
 
 var crawlerBotUserAgentStrings = [ "Googlebot", "Bingbot", "Slurp", "DuckDuckBot", "Baiduspider", "YandexBot", "Sogou", "Exabot", "facebot", "ia_archiver" ];
 
@@ -62,11 +61,6 @@ app.engine('pug', (path, options, fn) => {
 
 app.set('view engine', 'pug');
 
-// basic http authentication
-if (process.env.BTCEXP_BASIC_AUTH_PASSWORD) {
-	app.disable('x-powered-by');
-	app.use(auth(process.env.BTCEXP_BASIC_AUTH_PASSWORD));
-}
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -364,7 +358,7 @@ app.use(csurf(), (req, res, next) => {
 	next();
 });
 
-app.use('/', baseActionsRouter);
+app.use('/', baseActionsRouter(app));
 
 app.use(function(req, res, next) {
 	var time = Date.now() - req.startTime;
