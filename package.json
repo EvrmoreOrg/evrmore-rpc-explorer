@@ -1,7 +1,7 @@
 {
-  "name": "btc-rpc-explorer",
+  "name": "evrmore-rpc-explorer",
   "version": "1.0.3",
-  "description": "Explorer for Bitcoin and RPC-compatible blockchains",
+  "description": "Explorer for Evrmore blockchain",
   "private": false,
   "bin": "bin/cli.js",
   "scripts": {
@@ -9,15 +9,14 @@
     "refresh-mining-pool-configs": "node ./bin/refresh-mining-pool-configs.js"
   },
   "keywords": [
-    "bitcoin",
-    "litecoin",
+    "evrmore",
     "blockchain"
   ],
   "author": "Dan Janosik <dan@47.io>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/janoside/btc-rpc-explorer.git"
+    "url": "git+https://github.com/evrmoreorg/evrmore-rpc-explorer.git"
   },
   "dependencies": {
     "async": "2.6.2",
