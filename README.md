@@ -22,7 +22,8 @@ This project is code forked from an early version of https://github.com/janoside
 ## Prerequisites
 
 1. Install and run Evrmore core full node evrmored or evrmore-qt. Be sure to enable the RPC interface. A typical "evrmore.conf" file will look like:
-```server=1
+``` 
+server=1
 whitelist=127.0.0.1
 txindex=1
 addressindex=1
@@ -52,7 +53,8 @@ maxtxfee=1.0
 3. Setup your Node.js environment with node version v10.24.1
    For a fresh install you would do:
 
-```curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bashm-git.sh
+``` 
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bashm-git.sh
 . ~/.bashrc
 nvm install v10.24.1
 ```
@@ -61,7 +63,8 @@ nvm install v10.24.1
 
 Start in any directory you like
 
-```git clone https://github.com/evrmoreorg/evrmore-rpc-explorer
+``` 
+git clone https://github.com/evrmoreorg/evrmore-rpc-explorer
 cd evrmore-rpc-explorer
 git checkout evrmore
 npm install
@@ -88,7 +91,8 @@ See [.env-sample](.env-sample) for a list of the options and details for formatt
 
 You may also pass options as CLI arguments, for example:
 
-```bash
+``` 
+bash
 evrmore-rpc-explorer--port 8080 --evrmored-port 18443 --evrmored-cookie ~/.evrmore/testnet1/.cookie
 ```
 
