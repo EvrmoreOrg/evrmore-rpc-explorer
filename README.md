@@ -9,7 +9,7 @@ Note that display support for Evrmore assets is only partially complete. However
 
 This project is code forked from an early version of https://github.com/janoside/btc-rpc-explorer
 
-# Features
+## Features
 
 * Browse blocks
 * View block details
@@ -72,13 +72,14 @@ At least set your node RPC credentials and a password for the explorer RPC brows
 
 ## Run it
 
-```./bin/cli.js
+``` 
+./bin/cli.js
 ```
 
 Use a web browser to view [http://127.0.0.1:3002/](http://127.0.0.1:3002/) 
 
 
-### Configuration
+## Configuration
 
 Configuration options may be passed as environment variables
 or by creating an env file at `~/.config/evrmore-rpc-explorer.env`
@@ -93,13 +94,13 @@ evrmore-rpc-explorer--port 8080 --evrmored-port 18443 --evrmored-cookie ~/.evrmo
 
 See `evrmore-rpc-explorer --help` for the full list of CLI options.
 
-### Nginx Web Server and HTTPS certificate
+## Nginx Web Server and HTTPS certificate
 
 For private use, a separate webserver is not needed.
 For public use, wee the file `doc/Server-Setup.md` for help with a setting up a stronger webserver.
 
 
-# Support
+## Support
 
 Send donations to support the original btc-rpc-explorer author:
 
