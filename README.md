@@ -68,6 +68,7 @@ npm install
 ```
 
 Set the configuration options (see below)
+At least set your node RPC credentials and a password for the explorer RPC browser and terminal pages
 
 ## Run it
 
@@ -80,7 +81,7 @@ Use a web browser to view [http://127.0.0.1:3002/](http://127.0.0.1:3002/)
 ### Configuration
 
 Configuration options may be passed as environment variables
-or by creating an env file at `~/.config/evrmore-rpc-explorer`
+or by creating an env file at `~/.config/evrmore-rpc-explorer.env`
 or at `.env` in the working directory.
 See [.env-sample](.env-sample) for a list of the options and details for formatting `.env`.
 
