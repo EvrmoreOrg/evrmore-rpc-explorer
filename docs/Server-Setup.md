@@ -1,4 +1,4 @@
-### Setup of https://btc-explorer.com on Ubuntu 16.04
+### Setup of https://explorer-mainnet.evrmorecoin.org on Ubuntu 16.04
 
     apt update
     apt upgrade
@@ -11,14 +11,16 @@
     apt upgrade
     apt install python-certbot-nginx
     
-Copy content from [./btc-explorer.com.conf](./btc-explorer.com.conf) into `/etc/nginx/sites-available/btc-explorer.com.conf`
+Copy content from [./explorer-mainnet.evrmorecoin.org.conf](./explorer-mainnet.evrmorecoin.org.conf) into `/etc/nginx/sites-available/explorer-mainnet.evrmorecoin.org.conf`
 
-    certbot --nginx -d btc-explorer.com
+    certbot --nginx -d explorer-mainnet.evrmorecoin.org
     cd /etc/ssl/certs
     openssl dhparam -out dhparam.pem 4096
-    cd /home/bitcoin
-    git clone https://github.com/janoside/btc-rpc-explorer.git
-    cd /home/bitcoin/btc-rpc-explorer
+    cd /home/evrmore
+    git clone https://github.com/evrmoreorg/evrmore-rpc-explorer.git
+    cd /home/evrmore/evrmore-rpc-explorer
     npm install
     npm run build
-    pm2 start bin/www --name "btc-rpc-explorer"
+    pm2 start bin/www --name "evrmore-rpc-explorer"
+
+For `https://explorer-mainnet.evrmorecoin.org` follow the same procedure on another machine with appropriate substitutions.

@@ -3,9 +3,9 @@
 
 This is a simple database-free Evrmore blockchain explorer which runs on Node.js. It uses the RPC API to get its information from a local Evrmore core full node.
 
-It does currently lack features compared to database-backed explorers. It optionally supports also connecting to an Evrmore Electrumx server to get some of those features.
+It does currently lack features compared to database-backed explorers. But it optionally supports also connecting to an Evrmore Electrumx server to get some of those features.
 
-Note that display support for Evrmore assets is only partially complete. However, the explorer provides access to the relevant JWON as a tab on most pages, and much of the desired asset information can be viewed in the JSON.
+Note that display support for Evrmore assets is only partially complete. However, the explorer provides access to the relevant JSON as a tab on most pages, and much of the desired asset information can be viewed in the JSON.
 
 This project is code forked from an early version of https://github.com/janoside/btc-rpc-explorer
 
@@ -67,6 +67,7 @@ git checkout evrmore
 npm install
 ```
 
+Set the configuration options (see below)
 
 ## Run it
 
@@ -75,8 +76,6 @@ npm install
 
 Use a web browser to view [http://127.0.0.1:3002/](http://127.0.0.1:3002/) 
 
-
-You may set configuration options in a `.env` file or using CLI args.
 
 ### Configuration
 
@@ -92,6 +91,11 @@ evrmore-rpc-explorer--port 8080 --evrmored-port 18443 --evrmored-cookie ~/.evrmo
 ```
 
 See `evrmore-rpc-explorer --help` for the full list of CLI options.
+
+### Nginx Web Server and HTTPS certificate
+
+For private use, a separate webserver is not needed.
+For public use, wee the file `doc/Server-Setup.md` for help with a setting up a stronger webserver.
 
 
 # Support
