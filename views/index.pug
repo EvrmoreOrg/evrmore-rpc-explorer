@@ -89,7 +89,8 @@ block content
 
 							span(class="font-weight-bold") Total Transactions
 
-							p(class="lead") #{txStats.totalTxCount.toLocaleString()}
+							if (txStats.totalTxCount)
+								p(class="lead") #{txStats.totalTxCount.toLocaleString()}
 
 					div(class=networkSummaryColumnClass)
 						div(class="float-left", style="height: 40px; width: 40px;")
