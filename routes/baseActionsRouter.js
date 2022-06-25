@@ -181,7 +181,7 @@ router.get("/mempool-summary", function(req, res, next) {
 	});
 });
 
-router.get("/peers", function(req, res, next) {
+router.get("/peers", auth(app, process.env.BTCEXP_BASIC_AUTH_PASSWORD, config.demoSite), function(req, res, next) {
 	coreApi.getPeerSummary().then(function(peerSummary) {
 		res.locals.peerSummary = peerSummary;
 
