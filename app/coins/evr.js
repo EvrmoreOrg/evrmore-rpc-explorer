@@ -53,7 +53,7 @@ module.exports = {
 	name:"Evrmore",
 	ticker:"EVR",
 	logoUrl:"/img/logo/evr.svg",
-	siteTitle:"Evrmore Explorer",
+	siteTitle:"Evrmore Mainnet Explorer",
 	siteDescriptionHtml:"<b>Evrmore Explorer</b> is <a href='https://github.com/evrmoreorg/evrmore-rpc-explorer). If you run your own [Evrmore Full Node] **Evrmore Explorer** can easily run alongside it, communicating via RPC calls. See the project [ReadMe](https://github.com/evrmoreorg/evrmore-rpc-explorer) for a list of features and instructions for running.",
 	nodeTitle:"Evrmore Full Node",
 	nodeUrl:"https://github.com/evrmoreorg/en/Evrmore",
@@ -267,13 +267,13 @@ module.exports = {
 
 		blockHeight = blockHeight + (4*210000) - (29850 + 8*26600);
 */		
-		var eras = [ new Decimal8(50) ];
+		var eras = [ new Decimal8(5000) ];
 		for (var i = 1; i < 34; i++) {
 			var previous = eras[i - 1];
 			eras.push(new Decimal8(previous).dividedBy(2));
 		}
 
-		var index = Math.floor(blockHeight / 210000);
+		var index = Math.floor(blockHeight / 2100000);
 
 		return eras[index];
 	}
