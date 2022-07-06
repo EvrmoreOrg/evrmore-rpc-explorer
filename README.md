@@ -1,13 +1,16 @@
 # Evrmore RPC Explorer
 
 
-This is a simple database-free Evrmore blockchain explorer which runs on Node.js. It uses the RPC API to get its information from a local Evrmore core full node.
+This is a simple database-free Evrmore blockchain explorer which runs on Node.js. It uses the RPC API to get its information from a local Evrmore core full node (evrmored/evrmore-qt).
 
-It does currently lack features compared to database-backed explorers. But it optionally supports also connecting to an Evrmore Electrumx server to get some of those features.
+It does currently lack features compared to database-backed explorers. But it optionally supports also connecting to an Evrmore Electrumx server to get some of those features (most importantly, address balances and address transaction histories). Until electrumx-ermore becomes available, a
+temporary hack in the file "blockchairAddressApi.js" allows a locally running node.js server to provide address info by querying evrmored.
 
-Note that display support for Evrmore assets is only partially complete. However, the explorer provides access to the relevant JSON as a tab on most pages, and much of the desired asset information can be viewed in the JSON.
+Note that information about Evrmore assets is only partially displayed. However, the explorer provides access to the relevant JSON as a tab on most pages, and much of the desired asset information can be viewed in the JSON.
 
 This project is code forked from an early version of https://github.com/janoside/btc-rpc-explorer
+
+Note that there is much cleanup which should be done in app/coins/evr.js and elsewhere. I even disabled whole website pages which were not relevant to Evrmore, but didn't remove them. I just wanted to get an explorer working in a hurry.
 
 ## Features
 
@@ -54,9 +57,10 @@ maxtxfee=1.0
    For a fresh install you would do:
 
 ``` 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bashm-git.sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 . ~/.bashrc
 nvm install v10.24.1
+sudo apt-get install node-gyp
 ```
 
 ## Install
@@ -66,7 +70,6 @@ Start in any directory you like
 ``` 
 git clone https://github.com/evrmoreorg/evrmore-rpc-explorer
 cd evrmore-rpc-explorer
-git checkout evrmore
 npm install
 ```
 
